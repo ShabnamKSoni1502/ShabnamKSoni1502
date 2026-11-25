@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300" role="img" aria-label="Monthly contributions with streak stats"><title>Monthly contributions with streak stats</title><style>
+.serif{font-family:'HeroSerif',Georgia,'Times New Roman',serif}
+.sans{font-family:'HeroSans','Segoe UI',Helvetica,Arial,sans-serif}
+.rise,.pop,.swing,.pulse,.ring,.nudge{transform-box:fill-box;transform-origin:center}
+.grow{transform-box:fill-box;transform-origin:bottom}
+.growx{transform-box:fill-box;transform-origin:left}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:scale(1)}}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes growx{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes swing{0%{opacity:0;transform:translateY(36px) rotate(-3deg)}60%{opacity:1;transform:translateY(-6px) rotate(.5deg)}100%{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+@keyframes ring{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(2.6)}}
+@keyframes nudge{0%,100%{transform:translate(0,0)}50%{transform:translate(3px,-3px)}}
+.rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.fade{animation:fade .6s ease-out both}
+.pop{animation:pop .45s cubic-bezier(.3,1.5,.5,1) both}
+.grow{animation:grow .7s cubic-bezier(.2,.8,.2,1) both}
+.growx{animation:growx .7s cubic-bezier(.2,.8,.2,1) both}
+.swing{animation:swing 1s cubic-bezier(.2,.8,.2,1) both}
+.pulse{animation:pulse 1.8s ease-in-out infinite}
+.ring{animation:ring 2.4s ease-out infinite}
+.nudge{animation:nudge 1.6s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect x="1" y="1" width="998" height="298" rx="20" fill="#FAF7F0" stroke="#D9D6D0" stroke-width="2"/>
+<text class="serif rise" style="animation-delay:1.90s" x="56" y="56" font-size="26" fill="#1B1B1B">Contributions per month</text>
+<line x1="48" y1="250" x2="650" y2="250" stroke="#D9D6D0" stroke-width="2"/>
+<rect class="grow" style="animation-delay:2.00s" x="56" y="247.0" width="34" height="3.0" rx="6" fill="#D6D4CE"/><text class="sans" x="73.0" y="274" font-size="12" text-anchor="middle" fill="#7F7E7B">Dec</text><rect class="grow" style="animation-delay:2.06s" x="106" y="247.0" width="34" height="3.0" rx="6" fill="#D6D4CE"/><text class="sans" x="123.0" y="274" font-size="12" text-anchor="middle" fill="#7F7E7B">Jan</text><rect class="grow" style="animation-delay:2.12s" x="156" y="247.0" width="34" height="3.0" rx="6" fill="#D6D4CE"/><text class="sans" x="173.0" y="274" font-size="12" text-anchor="middle" fill="#7F7E7B">Feb</text><rect class="grow" style="animation-delay:2.18s" x="206" y="247.0" width="34" height="3.0" rx="6" fill="#D6D4CE"/><text class="sans" x="223.0" y="274" font-size="12" text-anchor="middle" fill="#7F7E7B">Mar</text><rect class="grow" style="animation-delay:2.24s" x="256" y="247.0" width="34" height="3.0" rx="6" fill="#D6D4CE"/><text class="sans" x="273.0" y="274" font-size="12" text-anchor="middle" fill="#7F7E7B">Apr</text><rect class="grow" style="animation-delay:2.30s" x="306" y="231.7" width="34" height="18.3" rx="6" fill="#D6D4CE"/><text class="sans" x="323.0" y="274" font-size="12" text-anchor="middle" fill="#7F7E7B">May</text><rect class="grow" style="animation-delay:2.36s" x="356" y="242.4" width="34" height="7.6" rx="6" fill="#D6D4CE"/><text class="sans" x="373.0" y="274" font-size="12" text-anchor="middle" fill="#7F7E7B">Jun</text><rect class="grow" style="animation-delay:2.42s" x="406" y="247.0" width="34" height="3.0" rx="6" fill="#D6D4CE"/><text class="sans" x="423.0" y="274" font-size="12" text-anchor="middle" fill="#7F7E7B">Jul</text><rect class="grow" style="animation-delay:2.48s" x="456" y="247.0" width="34" height="3.0" rx="6" fill="#D6D4CE"/><text class="sans" x="473.0" y="274" font-size="12" text-anchor="middle" fill="#7F7E7B">Aug</text><rect class="grow" style="animation-delay:2.54s" x="506" y="192.2" width="34" height="57.8" rx="6" fill="#D6D4CE"/><text class="sans" x="523.0" y="274" font-size="12" text-anchor="middle" fill="#7F7E7B">Sep</text><rect class="grow" style="animation-delay:2.60s" x="556" y="110.0" width="34" height="140.0" rx="6" fill="#2F5BFF"/><text class="sans" x="573.0" y="274" font-size="12" text-anchor="middle" fill="#7F7E7B">Oct</text><text class="sans pop" style="animation-delay:3.00s" x="573.0" y="100.0" font-size="14" font-weight="700" text-anchor="middle" fill="#2F5BFF">92</text><rect class="grow" style="animation-delay:2.66s" x="606" y="247.0" width="34" height="3.0" rx="6" fill="#D6D4CE"/><text class="sans" x="623.0" y="274" font-size="12" text-anchor="middle" fill="#7F7E7B">Nov</text><g class="rise" style="animation-delay:2.40s"><text class="serif" x="690" y="120" font-size="44" fill="#1B1B1B">150</text><text class="sans" x="690" y="144" font-size="13" fill="#7F7E7B">Contributions</text></g><g class="rise" style="animation-delay:2.55s"><text class="serif" x="830" y="120" font-size="44" fill="#1B1B1B">1</text><text class="sans" x="830" y="144" font-size="13" fill="#7F7E7B">Current streak (days)</text></g><g class="rise" style="animation-delay:2.70s"><text class="serif" x="690" y="225" font-size="44" fill="#1B1B1B">3</text><text class="sans" x="690" y="249" font-size="13" fill="#7F7E7B">Longest streak (days)</text></g><g class="rise" style="animation-delay:2.85s"><text class="serif" x="830" y="225" font-size="44" fill="#1B1B1B">51</text><text class="sans" x="830" y="249" font-size="13" fill="#7F7E7B">Busiest day · Oct 10</text></g>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 236" width="330" height="236" role="img" aria-label="SECURITY: Next SecAudit"><title>SECURITY: Next SecAudit</title><style>
+.serif{font-family:'HeroSerif',Georgia,'Times New Roman',serif}
+.sans{font-family:'HeroSans','Segoe UI',Helvetica,Arial,sans-serif}
+.rise,.pop,.swing,.pulse,.ring,.nudge{transform-box:fill-box;transform-origin:center}
+.grow{transform-box:fill-box;transform-origin:bottom}
+.growx{transform-box:fill-box;transform-origin:left}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:scale(1)}}
+@keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes growx{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes swing{0%{opacity:0;transform:translateY(36px) rotate(-3deg)}60%{opacity:1;transform:translateY(-6px) rotate(.5deg)}100%{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+@keyframes ring{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(2.6)}}
+@keyframes nudge{0%,100%{transform:translate(0,0)}50%{transform:translate(3px,-3px)}}
+.rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.fade{animation:fade .6s ease-out both}
+.pop{animation:pop .45s cubic-bezier(.3,1.5,.5,1) both}
+.grow{animation:grow .7s cubic-bezier(.2,.8,.2,1) both}
+.growx{animation:growx .7s cubic-bezier(.2,.8,.2,1) both}
+.swing{animation:swing 1s cubic-bezier(.2,.8,.2,1) both}
+.pulse{animation:pulse 1.8s ease-in-out infinite}
+.ring{animation:ring 2.4s ease-out infinite}
+.nudge{animation:nudge 1.6s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<g transform="translate(0,8)"><g class="swing" style="animation-delay:3.50s">
+  <rect x="0" y="0" width="330" height="220" rx="20" fill="#F2C12E"/>
+  <text class="sans" x="26" y="42" font-size="14" font-weight="700" letter-spacing="3" fill="#1B1B1B">SECURITY</text>
+  <circle class="ring" cx="296" cy="36" r="6" fill="none" stroke="#1B1B1B" stroke-width="2"/>
+  <circle cx="296" cy="36" r="4" fill="#1B1B1B"/>
+  <text class="serif pop" style="animation-delay:3.90s" x="24" y="122" font-size="64" fill="#1B1B1B">Next</text>
+  <text class="sans" x="26" y="148" font-size="15" fill="#1B1B1B">SecAudit</text>
+  <text class="sans" x="26" y="178" font-size="14" fill="#1B1B1B" opacity=".85">On the build list</text>
+  <g transform="translate(284,172)"><path class="nudge" d="M0 14 L14 0 M3 0 H14 V11" fill="none"
+     stroke="#1B1B1B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></g>
+</g></g>
+</svg>
