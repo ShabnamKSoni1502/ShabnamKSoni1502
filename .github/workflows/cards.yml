@@ -2,8 +2,13 @@ name: Refresh README cards
 
 on:
   schedule:
-    - cron: "30 0 * * *"   # every day at 6:00 AM IST
-  workflow_dispatch:        # lets you run it by hand from the Actions tab
+    - cron: "30 0 * * *"        # every day at 6:00 AM IST
+  workflow_dispatch:             # run by hand from the Actions tab
+  push:                          # also runs when you edit your settings
+    paths:
+      - "config.json"
+      - "scripts/**"
+      - "data/portrait.json"
 
 permissions:
   contents: write
@@ -21,8 +26,13 @@ jobs:
       - name: Fetch contribution data
         run: python scripts/fetch_contributions.py
         env:
-          # Uses GH_PAT if you add that secret, otherwise the built-in token
           GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+
+      - name: Fetch repo info and metrics
+        run: python scripts/fetch_repos.py
+        continue-on-error: true   # a hiccup here keeps the last good values
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Render README cards
         run: python scripts/render_readme_cards.py

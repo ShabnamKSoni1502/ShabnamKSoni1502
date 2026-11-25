@@ -29,37 +29,17 @@ FONTS = ROOT / "fonts"
 STATIC = os.environ.get("STATIC") == "1"
 DEMO = os.environ.get("DEMO") == "1"
 
-# =====================  EDIT THIS PART  =====================
-# Only put things here that are real today. Update the tiles as your projects move.
-CONFIG = {
-    "name": "Shabnam Kumari Soni",
-    "tagline": "Software, AI and security engineer.",
-    "subline": "B.Tech CSE \u00b7 RKDF University \u00b7 Bengaluru",
-    "status": "Open to fresher roles",
-    "accent": "#2F5BFF",   # your one brand colour
-    "paper": "#FAF7F0",
-    "ink": "#1B1B1B",
-    "tiles": [
-        {"file": "build", "label": "BUILD", "color": "#2F5BFF", "text": "#FFFFFF",
-         "big": "2", "unit": "full-stack projects",
-         "lines": ["AI Job Tracker", "DocQA"]},
-        {"file": "ai", "label": "AI", "color": "#E8503A", "text": "#FFFFFF",
-         "big": "68.8%", "unit": "DocQA eval baseline",
-         "lines": ["RAG \u00b7 FastAPI \u00b7 ChromaDB"]},
-        {"file": "security", "label": "SECURITY", "color": "#F2C12E", "text": "#1B1B1B",
-         "big": "Next", "unit": "SecAudit",
-         "lines": ["On the build list"]},
-    ],
-    "repos": [
-        {"file": "repo1", "title": "AI Job Tracker",
-         "desc": "Track job applications with a dashboard, interview dates and AI help from Gemini.",
-         "tags": ["React", "Node.js", "PostgreSQL", "Docker"]},
-        {"file": "repo2", "title": "DocQA",
-         "desc": "Ask questions about your PDFs. Answers cite the page they came from.",
-         "tags": ["FastAPI", "ChromaDB", "RAG", "React"]},
-    ],
-}
-# ============================================================
+# Everything you edit lives in config.json (you can edit it on github.com).
+CONFIG = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
+
+
+def _load(name):
+    f = ROOT / "data" / name
+    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+
+
+REPOS_LIVE = _load("repos.json")
+METRICS = _load("metrics.json")
 
 ACCENT, PAPER, INK = CONFIG["accent"], CONFIG["paper"], CONFIG["ink"]
 
@@ -311,6 +291,22 @@ def activity(days):
     return svg(1000, 300, body, "Monthly contributions with streak stats")
 
 
+def resolve_tile(t, total):
+    ctx = {"repos": REPOS_LIVE.get("public_repos", "-"), "stars": REPOS_LIVE.get("stars", "-"),
+           "contributions": f"{total:,}"}
+
+    def fill(x):
+        for k, v in ctx.items():
+            x = x.replace("{" + k + "}", str(v))
+        return x
+
+    t = dict(t)
+    t["big"] = METRICS.get(t["file"]) or fill(t["big"])
+    t["unit"] = fill(t["unit"])
+    t["lines"] = [fill(x) for x in t["lines"]]
+    return t
+
+
 def tile(i, t):
     tc = t["text"]
     lines = "".join(
@@ -333,11 +329,14 @@ def tile(i, t):
 
 
 def repo(i, r):
-    lines = textwrap.wrap(r["desc"], 54)[:3]
+    live = REPOS_LIVE.get("repos", {}).get(r.get("repo", "").lower(), {})
+    desc = live.get("description") or r["desc"]
+    tags = (live.get("topics") or r["tags"])[:4]
+    lines = textwrap.wrap(desc, 54)[:3]
     text = "".join(f'<text class="sans" x="26" y="{80 + k * 20}" font-size="14" fill="{MUTED}">{escape(s)}</text>'
                   for k, s in enumerate(lines))
     pills, x = [], 26
-    for tag in r["tags"]:
+    for tag in tags:
         w = len(tag) * 7.4 + 22
         pills.append(f'<rect x="{x:.1f}" y="136" width="{w:.1f}" height="26" rx="13" fill="{mix(PAPER, ACCENT, .12)}"/>'
                      f'<text class="sans" x="{x + w / 2:.1f}" y="153" font-size="12" text-anchor="middle" '
@@ -361,7 +360,7 @@ def main():
     days = load_days()
     files = {"hero": hero(), "heatmap": heatmap(days), "activity": activity(days)}
     for i, t in enumerate(CONFIG["tiles"]):
-        files[t["file"]] = tile(i, t)
+        files[t["file"]] = tile(i, resolve_tile(t, sum(c for _, c in days)))
     for i, r in enumerate(CONFIG["repos"]):
         files[r["file"]] = repo(i, r)
     for name, content in files.items():
